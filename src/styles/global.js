@@ -2,11 +2,14 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
+
 *{
   margin: 0;
   padding: 0;
   outline: 0;
   box-sizing:border-box;
+
 }
 
 *:focus{
@@ -29,7 +32,7 @@ body{
 }
 
 body, input, button{
-  font-family: Consolas, 'Courier New', monospace;
+  font-family: 'Inconsolata', monospace;
 }
 
 a{
