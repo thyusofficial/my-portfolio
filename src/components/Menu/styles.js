@@ -19,18 +19,18 @@ export const Container = styled.div`
   width: 100%;
   background: #23272a;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   transition: all 0.5s ease;
 
   @media (max-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: fixed;
     max-width: 100%;
     width: 100%;
     max-height: 60px;
     height: 100%;
+    padding: 0 5%;
   }
 `;
 
@@ -106,12 +106,16 @@ export const Content = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    max-height: 100%;
-    max-width: 100%;
     height: 100%;
     width: 100%;
 
-    background: rgba(35, 39, 42, 0.9);
+    background: rgba(35, 39, 42, 0.95);
+
+    ul {
+      button {
+        color: #fff;
+      }
+    }
 
     img {
       max-width: 40%;
@@ -119,48 +123,52 @@ export const Content = styled.div`
   }
 `;
 
-export const MenuButton = styled.button`
+export const Logo = styled.a`
   display: none;
 
   @media (max-width: 768px) {
     display: block;
-    height: 100%;
-    position: absolute;
-    left: 80%;
-    background: none;
-    border: none;
+    text-decoration: none;
+    color: #fff;
+    font-size: 2.8rem;
   }
 `;
 
-export const MenuIcon = styled.span`
-  position: relative;
-  font-size: 2.8rem;
-  line-height: 3.8rem;
-  text-transform: uppercase;
-  color: ${props => (props.open ? 'transparent' : '#fff')};
-  transition: all 0.2s;
+export const MenuButton = styled.button`
+  display: none;
 
-  &::before {
-    position: absolute;
-    top: ${props => (props.open ? '50%' : '0')};
-    left: 0;
-    content: '';
-    width: 100%;
-    height: 3px;
-    background: #fff;
-    transform: ${props => (props.open ? 'rotate(45deg)' : 'none')};
-    transition: all 0.2s;
-  }
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    position: ${props => (props.open ? 'relative' : 'initial')};
 
-  &::after {
-    position: absolute;
-    top: ${props => (props.open ? '50%' : '100%')};
-    left: 0;
-    content: '';
-    width: 100%;
-    height: 3px;
-    background: #fff;
-    transform: ${props => (props.open ? 'rotate(-45deg)' : 'none')};
-    transition: all 0.2s;
+    span {
+      text-transform: uppercase;
+      font-size: 2.8rem;
+      color: ${props => (props.open ? 'transparent' : '#fff')};
+      transition: all 0.3s ease-in-out;
+
+      &:nth-child(1),
+      &:nth-child(3) {
+        width: 100%;
+        height: 2px;
+        background: #fff;
+        position: ${props => (props.open ? 'absolute' : 'initial')};
+        transition: all 0.2s ease-in-out;
+      }
+
+      &:nth-child(1) {
+        transform: ${props => (props.open ? 'rotate(45deg)' : 'none')};
+        top: ${props => (props.open ? '45%' : '0')};
+      }
+
+      &:nth-child(3) {
+        transform: ${props => (props.open ? 'rotate(-45deg)' : 'none')};
+        bottom: ${props => (props.open ? '45%' : '0')};
+      }
+    }
   }
 `;

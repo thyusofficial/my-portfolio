@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { Container, Content, MenuButton, MenuIcon } from './styles';
+import { Container, Content, Logo, MenuButton } from './styles';
 
 export default function Menu({ homeRef, aboutRef, resumeRef, contactRef }) {
   const [open, setOpen] = useState(false);
@@ -22,6 +22,8 @@ export default function Menu({ homeRef, aboutRef, resumeRef, contactRef }) {
 
   return (
     <Container>
+      <Logo href="/">Matheus Cardoso</Logo>
+
       <Content open={open}>
         <img
           src="https://ui-avatars.com/api/?background=7289DA&color=fff&name=Matheus+Cardoso&size=300"
@@ -62,8 +64,11 @@ export default function Menu({ homeRef, aboutRef, resumeRef, contactRef }) {
           </a>
         </footer>
       </Content>
-      <MenuButton type="button" onClick={handleOpen}>
-        <MenuIcon open={open}>Menu</MenuIcon>
+
+      <MenuButton type="button" onClick={handleOpen} open={open}>
+        <span />
+        <span>Menu</span>
+        <span />
       </MenuButton>
     </Container>
   );

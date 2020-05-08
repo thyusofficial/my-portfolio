@@ -10,15 +10,16 @@ export default function About({ aboutRef }) {
   return (
     <Container ref={aboutRef}>
       <Content>
-        <Title>Sobre mim</Title>
+        <Title>Sobre</Title>
         <Informations>
           <div>
-            <h3>Title</h3>
+            <h3>Um pouco sobre mim</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id
-              finibus nisl, a dignissim quam. Sed condimentum ullamcorper ex ut
-              tristique. Sed blandit, nibh in varius accumsan, libero mi
-              tincidunt elit, in mattis risus massa eget felis.
+              Sou desenvolvedor, acadêmico e atuo nas áreas de desenvolvimento
+              web & mobile. Gosto de aprender sobre tecnologias e ferramentas
+              que estão forte no mercado assim como as melhores práticas para
+              desenvolvimento de soluções rápidas e que entregam um bom
+              resultado para o usuário final.
             </p>
             <ul>
               <li>

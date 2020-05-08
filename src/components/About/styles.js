@@ -47,9 +47,11 @@ export const Informations = styled.div`
 
       li {
         margin: 10px 0;
+        display: flex;
       }
 
       span {
+        margin-left: 5px;
         color: #fff;
         font-weight: initial;
       }
@@ -68,7 +70,7 @@ export const Informations = styled.div`
       background: #7289da;
       padding: 15px 25px;
 
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
       &::before {
         content: '';

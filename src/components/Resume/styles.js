@@ -30,7 +30,7 @@ export const Content = styled.div`
 
 export const Skills = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(470px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   grid-gap: 20px;
 `;
 
