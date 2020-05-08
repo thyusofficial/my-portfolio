@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Title from '~/components/Title';
 import matheus from '~/assets/matheus.jpg';
 import { Container, Content, Informations } from './styles';
+import cv from '~/curriculum/cv.pdf';
 
 export default function About({ aboutRef }) {
   return (
@@ -37,7 +38,7 @@ export default function About({ aboutRef }) {
               </li>
             </ul>
 
-            <a href="../../curriculum/curriculum.pdf" download="curriculum.pdf">
+            <a href={cv} download>
               Baixar currículo
               <MdFileDownload size={20} />
             </a>
