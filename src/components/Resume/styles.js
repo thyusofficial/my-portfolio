@@ -66,8 +66,7 @@ export const ProgressBar = styled.div`
     ${props =>
       props.isVisible &&
       css`
-        animation: ${props => progress(props.skillWidth)} 0.7s ease-in-out
-          forwards;
+        animation: ${progress(props.skillWidth)} 0.7s ease-in-out forwards;
       `}
   }
 `;
