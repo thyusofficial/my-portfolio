@@ -18,6 +18,7 @@ export const Container = styled.section`
     margin-left: 0;
   }
 `;
+
 export const Content = styled.div`
   max-width: 980px;
   width: 90%;
@@ -95,7 +96,7 @@ export const Timeline = styled.div`
       padding: 15px 30px;
       border-bottom: 2px dashed ${lighten(0.2, '#2c2f33')};
       border-left: 4px solid ${lighten(0.2, '#2c2f33')};
-      transition:all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
 
       h3 {
         font-weight: bold;
@@ -115,9 +116,8 @@ export const Timeline = styled.div`
         line-height: 2.8rem;
       }
 
-      &:hover{
+      &:hover {
         border-left: 4px solid #7289da;
-
       }
 
       &::before {
@@ -131,12 +131,12 @@ export const Timeline = styled.div`
         border: 4px solid ${lighten(0.2, '#2c2f33')};
         border-radius: 50%;
         background: #2c2f33;
-        transition:all 0.2s ease-in-out;
-
+        transition: all 0.2s ease-in-out;
       }
 
-      &:hover::before{
+      &:hover::before {
         border: 4px solid #7289da;
+      }
     }
   }
 `;
