@@ -13,17 +13,19 @@ export default function Contact({ contactRef }) {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(event) {
     event.preventDefault();
+    setLoading(true);
 
     try {
       const schema = Yup.object().shape({
-        fullName: Yup.string().required('Insira um nome válido.'),
+        fullName: Yup.string().required('Insira seu nome!'),
         email: Yup.string()
-          .email('Insira um e-mail válido')
-          .required('O e-mail obrigatório'),
-        message: Yup.string().required('Insira sua mensagem.'),
+          .email('Insira um e-mail válido!')
+          .required('O e-mail obrigatório!'),
+        message: Yup.string().required('Insira sua mensagem!'),
       });
 
       await schema.validate(
@@ -47,6 +49,7 @@ export default function Contact({ contactRef }) {
         });
       }
     }
+    setLoading(false);
   }
 
   return (
@@ -58,7 +61,6 @@ export default function Contact({ contactRef }) {
           <form onSubmit={handleSubmit}>
             <div>
               <input
-                required
                 name="fullName"
                 type="text"
                 id="full-name"
@@ -73,9 +75,8 @@ export default function Contact({ contactRef }) {
             <div>
               <input
                 name="email"
-                type="email"
+                type="text"
                 id="email"
-                required
                 autoComplete="off"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
@@ -88,7 +89,6 @@ export default function Contact({ contactRef }) {
               <textarea
                 name="message"
                 id="message"
-                required
                 autoComplete="off"
                 value={message}
                 onChange={e => setMessage(e.target.value)}

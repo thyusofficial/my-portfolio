@@ -46,12 +46,12 @@ export const ContactForm = styled.div`
       }
 
       input:focus ~ label,
-      input:valid ~ label,
       textarea:focus ~ label,
-      textarea:valid ~ label {
+      input:not([value='']) ~ label,
+      textarea:not(:empty) ~ label {
         font-size: 1.4rem;
         transform: translateY(-30px);
-        transition: all 0.2s;
+        transition: all 0.2s ease;
         color: #7289da;
       }
 
