@@ -46,8 +46,8 @@ export const Content = styled.div`
   line-height: 2.8rem;
 
   img {
-    max-width: 90%;
-    width: 100%;
+    max-width: 200px;
+    max-height: 200px;
     margin-top: 15px;
     border-radius: 50%;
     border: 7px solid #2c2f33;
@@ -118,7 +118,8 @@ export const Content = styled.div`
     }
 
     img {
-      max-width: 40%;
+      max-width: 150px;
+      max-height: 150px;
     }
   }
 `;
