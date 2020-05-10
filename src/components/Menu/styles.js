@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { lighten } from 'polished';
+import { lighten, darken } from 'polished';
 
 const blink = keyframes`
   from{
@@ -93,11 +93,11 @@ export const Content = styled.div`
 
     a {
       color: #7289da;
-      opacity: 0.9;
+      transition: all 0.2s ease;
     }
 
     a:hover {
-      opacity: 1;
+      color: ${darken(0.05, '#7289da')};
     }
   }
 
