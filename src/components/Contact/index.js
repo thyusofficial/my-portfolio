@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import Title from '~/components/Title';
 import developer from '~/assets/developer.svg';
-import { Container, Content, ContactForm } from './styles';
+import { Container, Content, ContactForm, Spinner } from './styles';
 import api from '~/services/api';
 
 export default function Contact({ contactRef }) {
@@ -96,10 +96,13 @@ export default function Contact({ contactRef }) {
               <span />
               <label htmlFor="message">Mensagem</label>
             </div>
-
-            <button type="submit">
-              Enviar <MdSend size={20} color="#fff" />
-            </button>
+            {!loading ? (
+              <button type="submit">
+                Enviar <MdSend size={20} color="#fff" />
+              </button>
+            ) : (
+              <Spinner />
+            )}
           </form>
 
           <div>
