@@ -1,32 +1,98 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useState } from 'react';
 import { MdSend, MdPhone, MdEmail } from 'react-icons/md';
 import PropTypes from 'prop-types';
+import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 import Title from '~/components/Title';
 import developer from '~/assets/developer.svg';
 import { Container, Content, ContactForm } from './styles';
+import api from '~/services/api';
 
 export default function Contact({ contactRef }) {
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    try {
+      const schema = Yup.object().shape({
+        fullName: Yup.string().required('Insira um nome válido.'),
+        email: Yup.string()
+          .email('Insira um e-mail válido')
+          .required('O e-mail obrigatório'),
+        message: Yup.string().required('Insira sua mensagem.'),
+      });
+
+      await schema.validate(
+        { fullName, email, message },
+        { abortEarly: false }
+      );
+
+      await api.post('sendMail', {
+        fullName,
+        email,
+        message,
+      });
+      toast.success('Contato enviado com sucesso!');
+      setFullName('');
+      setEmail('');
+      setMessage('');
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        err.errors.map(error => {
+          return toast.error(error);
+        });
+      }
+    }
+  }
+
   return (
     <Container ref={contactRef}>
       <Content>
         <Title>Contato</Title>
 
         <ContactForm>
-          <form action="#">
+          <form onSubmit={handleSubmit}>
             <div>
-              <input type="text" id="full-name" required autoComplete="off" />
+              <input
+                required
+                name="fullName"
+                type="text"
+                id="full-name"
+                autoComplete="off"
+                value={fullName}
+                onChange={e => setFullName(e.target.value)}
+              />
               <span />
               <label htmlFor="full-name">Nome Completo</label>
             </div>
 
             <div>
-              <input type="email" id="email" required autoComplete="off" />
+              <input
+                name="email"
+                type="email"
+                id="email"
+                required
+                autoComplete="off"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+              />
               <span />
               <label htmlFor="email">E-mail</label>
             </div>
 
             <div>
-              <textarea id="message" required autoComplete="off" />
+              <textarea
+                name="message"
+                id="message"
+                required
+                autoComplete="off"
+                value={message}
+                onChange={e => setMessage(e.target.value)}
+              />
               <span />
               <label htmlFor="message">Mensagem</label>
             </div>
