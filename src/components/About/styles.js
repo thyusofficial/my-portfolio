@@ -76,6 +76,7 @@ export const Informations = styled.div`
 
       &:hover {
         transform: translateY(-5px);
+
         background: ${darken(0.05, '#7289da')};
       }
     }
@@ -83,10 +84,47 @@ export const Informations = styled.div`
 
   div:nth-child(2) {
     width: calc(50% - 10px);
+    overflow: hidden;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      content: '';
+      width: 5%;
+      height: 65%;
+      background: #7289da;
+      opacity: 0.8;
+      transition: all 0.5s ease;
+    }
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 100;
+      content: '';
+      width: 5%;
+      height: 65%;
+      background: #7289da;
+      opacity: 0.8;
+      transition: all 0.5s ease;
+    }
+
+    &:hover::before,
+    &:hover::after {
+      height: 85%;
+    }
 
     img {
       max-width: 100%;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      transition: all 0.5s ease;
+
+      &:hover {
+        transform: scale(1.5);
+      }
     }
   }
 
