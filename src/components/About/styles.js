@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.section`
   margin-left: 250px;
@@ -69,22 +70,13 @@ export const Informations = styled.div`
       font-weight: bold;
       background: #7289da;
       padding: 15px 25px;
-
+      border-radius: 4px;
+      transition: all 0.2s ease 0s;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
-      &::before {
-        content: '';
-        position: absolute;
-        bottom: 0px;
-        left: 0px;
-        width: 0%;
-        height: 3px;
-        background: #fff;
-        transition: all 0.5s;
-      }
-
-      &:hover::before {
-        width: 100%;
+      &:hover {
+        transform: translateY(-5px);
+        background: ${darken(0.05, '#7289da')};
       }
     }
   }

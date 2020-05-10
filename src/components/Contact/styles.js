@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { lighten } from 'polished';
+import { lighten, darken } from 'polished';
 
 export const Container = styled.section`
   margin-left: 250px;
@@ -85,8 +85,6 @@ export const ContactForm = styled.div`
     }
 
     button {
-      position: relative;
-
       display: flex;
       align-items: center;
       justify-content: center;
@@ -98,27 +96,17 @@ export const ContactForm = styled.div`
       font-size: 1.8rem;
       font-weight: bold;
       border: none;
-      overflow: hidden;
-
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-
-      &::before {
-        content: '';
-        position: absolute;
-        bottom: 0px;
-        left: 0px;
-        width: 0%;
-        height: 3px;
-        background: #fff;
-        transition: all 0.5s;
-      }
-
-      &:hover::before {
-        width: 100%;
-      }
+      border-radius: 4px;
+      transition: all 0.2s ease 0s;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
       svg {
         margin: 0 15px;
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+        background: ${darken(0.05, '#7289da')};
       }
     }
   }
