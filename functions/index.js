@@ -1,6 +1,8 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const nodemailer = require('nodemailer');
+const hbs = require('nodemailer-express-handlebars');
+const path = require('path');
 const cors = require('cors')({ origin: true });
 require('dotenv').config();
 
@@ -16,6 +18,22 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+const viewPath = path.resolve(__dirname, 'views', 'email');
+
+transporter.use(
+  'compile',
+  hbs({
+    viewEngine: {
+      extname: '.hbs', // handlebars extension
+      layoutsDir: viewPath, // location of handlebars templates
+      defaultLayout: 'index', // name of main template
+      partialsDir: viewPath, // location of your subtemplates aka. header, footer etc
+    },
+    viewPath,
+    extName: '.hbs',
+  })
+);
+
 exports.sendMail = functions.https.onRequest((req, res) => {
   cors(req, res, () => {
     const { fullName, email, message } = req.body;
@@ -24,14 +42,12 @@ exports.sendMail = functions.https.onRequest((req, res) => {
       from: `${fullName} <${email}>`,
       to: 'matheus.silvacardoso10@gmail.com',
       subject: 'Contato Matheus',
-      html: `<p style="font-size: 16px; color: #222222;">${message}</p>
-          <br />
-          <footer>
-          <p style="font-size: 14px; color: #222222;">Nome: ${fullName}</p>
-          <br />
-          <p style="font-size: 14px; color: #222222;">Email: ${email}</p>
-          </footer>
-      `,
+      template: 'index',
+      context: {
+        name: fullName,
+        email,
+        message,
+      },
     };
 
     return transporter.sendMail(mailOptions, (erro, info) => {
