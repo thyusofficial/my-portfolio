@@ -24,8 +24,8 @@ export const Content = styled.div`
   color: #fff;
 
   h1 {
-    font-size: 3.6rem;
-    line-height: 4.6rem;
+    font-size: 4rem;
+    line-height: 5rem;
     text-align: center;
 
     span {

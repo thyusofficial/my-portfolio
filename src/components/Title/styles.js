@@ -16,8 +16,8 @@ export const Container = styled.div`
 
   h1 {
     color: #fff;
-    font-size: 3.5rem;
-    line-height: 4.5rem;
+    font-size: 4rem;
+    line-height: 5rem;
     text-transform: uppercase;
     position: relative;
   }
