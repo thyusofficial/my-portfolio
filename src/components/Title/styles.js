@@ -13,13 +13,15 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   margin: 10% 0;
+  position: relative;
 
   h1 {
-    color: #fff;
-    font-size: 4rem;
+    color: ${props => props.theme.colors.text};
+    font-size: 4.5rem;
     line-height: 5rem;
     text-transform: uppercase;
     position: relative;
+    z-index: 200;
   }
 
   h1::before {
@@ -31,7 +33,7 @@ export const Container = styled.div`
         content: '';
         width: 100%;
         height: 5px;
-        background: #7289da;
+        background: ${props.theme.colors.primary};
         border-radius: 4px;
         top: 100%;
       `};

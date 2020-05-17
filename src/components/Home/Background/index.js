@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import { Container, Line } from './styles';
 
@@ -9,7 +10,7 @@ export default function Background({ children }) {
 
   useEffect(() => {
     if (lines.length <= 10) {
-      setLines([...lines, random(1, 50)]);
+      setLines([...lines, random(1, 2)]);
     }
   }, [lines]);
 
@@ -21,8 +22,8 @@ export default function Background({ children }) {
           key={line}
           styles={{
             left: random(1, 99),
-            height: random(50, 300),
-            delay: random(5, 0.1),
+            height: random(50, 100),
+            delay: random(3, 0),
             duration: random(5, 10),
           }}
         />
@@ -30,3 +31,7 @@ export default function Background({ children }) {
     </Container>
   );
 }
+
+Background.propTypes = {
+  children: PropTypes.element.isRequired,
+};

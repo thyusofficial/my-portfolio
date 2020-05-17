@@ -49,7 +49,6 @@ export const ContactForm = styled.div`
         position: absolute;
         top: 0;
         left: 0;
-        color: ${lighten(0.2, '#2c2f33')};
         font-size: 1.8rem;
         padding: 10px 5px;
       }
@@ -61,20 +60,19 @@ export const ContactForm = styled.div`
         font-size: 1.4rem;
         transform: translateY(-30px);
         transition: all 0.2s ease;
-        color: #7289da;
       }
 
       input,
       textarea {
+        color: ${props => props.theme.colors.text};
         width: 100%;
         height: 100%;
         font-size: 1.8rem;
         padding: 10px 5px;
         border: none;
         background: none;
-        color: #fff;
         resize: none;
-        border-bottom: 2px solid ${lighten(0.2, '#2c2f33')};
+        border-bottom: 2px solid ${props => props.theme.colors.secundary};
       }
 
       span {
@@ -83,7 +81,7 @@ export const ContactForm = styled.div`
         left: 0;
         width: 0;
         height: 3px;
-        background: #7289da;
+        background: ${props => props.theme.colors.primary};
       }
 
       input:focus ~ span,
@@ -101,9 +99,9 @@ export const ContactForm = styled.div`
       height: 45px;
       width: 100%;
       padding: 10px 5px;
-      background: #7289da;
-      color: #fff;
+      background: ${props => props.theme.colors.primary};
       font-size: 1.8rem;
+      color: #fff;
       font-weight: bold;
       border: none;
       border-radius: 4px;
@@ -112,7 +110,8 @@ export const ContactForm = styled.div`
 
       &:hover {
         transform: translateY(-5px);
-        background: ${darken(0.05, '#7289da')};
+        background: ${props =>
+          props.theme && darken(0.05, props.theme.colors.primary)};
       }
 
       svg {
@@ -137,11 +136,12 @@ export const ContactForm = styled.div`
         a {
           font-size: 1.8rem;
           line-height: 2.8rem;
-          color: ${lighten(0.2, '#2c2f33')};
           margin-left: 10px;
+          color: ${props => props.theme.colors.text};
+          transition: color 0.2s ease;
 
           &:hover {
-            color: #7289da;
+            color: ${props => props.theme.colors.primary};
           }
         }
       }

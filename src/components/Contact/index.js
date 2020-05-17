@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { MdSend, MdPhone, MdEmail } from 'react-icons/md';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
+import { ThemeContext } from 'styled-components';
 import Title from '~/components/Title';
-import developer from '~/assets/developer.svg';
+import developerLight from '~/assets/developerLight.svg';
+import developerDark from '~/assets/developerDark.svg';
 import { Container, Content, ContactForm, Spinner } from './styles';
 import api from '~/services/api';
 
@@ -14,6 +16,8 @@ export default function Contact({ contactRef }) {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const { colors, title } = useContext(ThemeContext);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -106,14 +110,17 @@ export default function Contact({ contactRef }) {
           </form>
 
           <div>
-            <img src={developer} alt="Developer" />
+            <img
+              src={title === 'light' ? developerLight : developerDark}
+              alt="Developer"
+            />
             <ul>
               <li>
-                <MdPhone size={20} color="#7289da" />
+                <MdPhone size={20} color={colors.primary} />
                 <a href="tel:+55 51 994634296">+55 51 994634296</a>
               </li>
               <li>
-                <MdEmail size={20} color="#7289da" />
+                <MdEmail size={20} color={colors.primary} />
                 <a href="mailto:matheus.silvacardoso10@gmail.com">
                   matheus.silvacardoso10@gmail.com
                 </a>

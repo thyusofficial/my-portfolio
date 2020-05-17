@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { transparentize } from 'polished';
 
 const grow = keyframes`
   from{
@@ -24,7 +25,9 @@ export const Line = styled.div`
   z-index: -1;
   bottom: 0;
   position: absolute;
-  background: #23272a;
+  background: ${props =>
+    props.theme.colors.primary &&
+    transparentize(0.8, props.theme.colors.primary)};
   border-radius: 4px;
   width: 5px;
 
@@ -33,5 +36,5 @@ export const Line = styled.div`
 
   /* animation duration > delay > fill-mode */
   animation: ${grow} ${props => `${props.styles.duration}s`}
-    ${props => `${props.styles.delay}s`} backwards infinite;
+    ${props => `${props.styles.delay}s`} backwards infinite linear;
 `;

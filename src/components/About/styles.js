@@ -32,29 +32,27 @@ export const Informations = styled.div`
 
     h3 {
       font-size: 3rem;
-      color: #fff;
       margin: 10px 0;
     }
 
     p {
       margin: 10px 0;
-      color: #fff;
     }
 
     ul {
       margin: 10px 0;
-      color: #7289da;
-      font-weight: bold;
+      font-weight: 700;
 
       li {
         margin: 10px 0;
         display: flex;
-      }
+        color: ${props => props.theme.colors.primary};
 
-      span {
-        margin-left: 5px;
-        color: #fff;
-        font-weight: initial;
+        span {
+          margin-left: 5px;
+          font-weight: normal;
+          color: ${props => props.theme.colors.text};
+        }
       }
     }
 
@@ -66,9 +64,9 @@ export const Informations = styled.div`
 
       position: relative;
       text-decoration: none;
-      color: #fff;
       font-weight: bold;
-      background: #7289da;
+      background: ${props => props.theme.colors.primary};
+      color: #fff;
       padding: 15px 25px;
       border-radius: 4px;
       transition: all 0.2s ease 0s;
@@ -77,7 +75,9 @@ export const Informations = styled.div`
       &:hover {
         transform: translateY(-5px);
 
-        background: ${darken(0.05, '#7289da')};
+        background: ${props =>
+          props.theme.colors.primary &&
+          darken(0.05, props.theme.colors.primary)};
       }
     }
   }
@@ -95,7 +95,7 @@ export const Informations = styled.div`
       content: '';
       width: 5%;
       height: 65%;
-      background: #7289da;
+      background: ${props => props.theme.colors.primary};
       opacity: 0.8;
       transition: all 0.5s ease;
     }
@@ -108,7 +108,7 @@ export const Informations = styled.div`
       content: '';
       width: 5%;
       height: 65%;
-      background: #7289da;
+      background: ${props => props.theme.colors.primary};
       opacity: 0.8;
       transition: all 0.5s ease;
     }

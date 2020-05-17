@@ -21,15 +21,15 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #fff;
 
   h1 {
     font-size: 4rem;
     line-height: 5rem;
+    font-weight: 700;
     text-align: center;
 
     span {
-      color: #7289da;
+      color: ${props => props.theme.colors.primary};
     }
   }
 
@@ -53,7 +53,7 @@ export const Content = styled.div`
 
     a:hover {
       transition: all 0.2s;
-      border: 2px solid #7289da;
+      border: 2px solid ${props => props.theme.colors.primary};
     }
   }
 `;

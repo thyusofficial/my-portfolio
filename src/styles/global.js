@@ -30,7 +30,8 @@ html,body, #root{
 
 body{
   font-size: 1.6rem;
-  background: #2C2F33;
+  background: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
 }
 
 body, input, button{

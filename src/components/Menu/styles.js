@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { lighten, darken } from 'polished';
+import { transparentize, lighten } from 'polished';
 
 const blink = keyframes`
   from{
@@ -17,7 +17,9 @@ export const Container = styled.div`
   height: 100%;
   max-width: 250px;
   width: 100%;
-  background: #23272a;
+  background: ${props => props.theme.colors.secundary};
+  box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2),
+    0px 16px 24px 2px rgba(0, 0, 0, 0.14), 0px 6px 30px 5px rgba(0, 0, 0, 0.12);
 
   transition: all 0.5s ease;
 
@@ -31,6 +33,8 @@ export const Container = styled.div`
     max-height: 60px;
     height: 100%;
     padding: 0 5%;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+      0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
   }
 `;
 
@@ -45,12 +49,28 @@ export const Content = styled.div`
   font-size: 1.8rem;
   line-height: 2.8rem;
 
-  img {
-    max-width: 200px;
-    max-height: 200px;
-    margin-top: 15px;
-    border-radius: 50%;
-    border: 7px solid #2c2f33;
+  > div {
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: ${props => props.theme.colors.primary};
+      opacity: 0.2;
+      border-radius: 50%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 7px solid ${props => props.theme.colors.primary};
+    }
   }
 
   ul {
@@ -61,15 +81,16 @@ export const Content = styled.div`
       height: 100%;
       background: none;
       border: none;
-
       padding: 15px 0;
       font-weight: bold;
       font-size: 2rem;
       text-transform: uppercase;
-      color: ${lighten(0.2, '#2c2f33')};
+      color: ${props =>
+        props.theme.colors.text && lighten(0.5, props.theme.colors.text)};
+      transition: all 0.2s ease;
 
       &:hover {
-        color: #7289da;
+        color: ${props => props.theme.colors.primary};
       }
 
       &:after {
@@ -79,25 +100,23 @@ export const Content = styled.div`
 
       &:hover:after {
         animation: ${blink} 0.9s ease infinite;
-        color: #7289da;
       }
     }
   }
 
   footer {
-    background: #2c2f33;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    text-align: center;
     padding: 15px 0;
-    color: #fff;
+    background: ${props => props.theme.colors.primary};
 
-    a {
-      color: #7289da;
-      transition: all 0.2s ease;
-    }
-
-    a:hover {
-      color: ${darken(0.05, '#7289da')};
+    span {
+      margin-right: 10px;
+      font-weight: 200;
+      color: ${props =>
+        props.theme.colors.text && lighten(0.5, props.theme.colors.text)};
     }
   }
 
@@ -109,17 +128,13 @@ export const Content = styled.div`
     height: 100%;
     width: 100%;
 
-    background: rgba(35, 39, 42, 0.95);
+    background: ${props =>
+      props.theme.colors.secundary &&
+      transparentize(0.1, props.theme.colors.secundary)};
 
-    ul {
-      button {
-        color: #fff;
-      }
-    }
-
-    img {
-      max-width: 150px;
-      max-height: 150px;
+    > div {
+      width: 150px;
+      height: 150px;
     }
   }
 `;
@@ -130,8 +145,8 @@ export const Logo = styled.a`
   @media (max-width: 768px) {
     display: block;
     text-decoration: none;
-    color: #fff;
     font-size: 2.8rem;
+    color: #fff;
   }
 `;
 
@@ -149,8 +164,8 @@ export const MenuButton = styled.button`
     span {
       text-transform: uppercase;
       font-size: 2.8rem;
-      color: ${props => (props.open ? 'transparent' : '#fff')};
       transition: all 0.3s ease-in-out;
+      color: ${props => (props.open ? 'transparent' : '#fff')};
 
       &:nth-child(1),
       &:nth-child(3) {

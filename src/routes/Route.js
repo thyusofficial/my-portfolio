@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 
 import Menu from '~/components/Menu';
 import Home from '~/components/Home';
@@ -6,7 +7,7 @@ import About from '~/components/About';
 import Resume from '~/components/Resume';
 import Contact from '~/components/Contact';
 
-export default function Route() {
+export default function Route({ toggleTheme }) {
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const resumeRef = useRef(null);
@@ -15,6 +16,7 @@ export default function Route() {
   return (
     <>
       <Menu
+        toggleTheme={toggleTheme}
         homeRef={homeRef}
         aboutRef={aboutRef}
         resumeRef={resumeRef}
@@ -27,3 +29,7 @@ export default function Route() {
     </>
   );
 }
+
+Route.propTypes = {
+  toggleTheme: PropTypes.func.isRequired,
+};

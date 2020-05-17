@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import { MdBook, MdWork } from 'react-icons/md';
 import PropTypes from 'prop-types';
+import { ThemeContext } from 'styled-components';
 import Title from '~/components/Title';
 
 import {
@@ -16,6 +17,8 @@ export default function Resume({ resumeRef }) {
   const skillsRef = useRef(null);
 
   const [isVisible, setIsVisible] = useState(false);
+
+  const { colors } = useContext(ThemeContext);
 
   function checkVisible() {
     const { top, bottom } = skillsRef.current.getBoundingClientRect();
@@ -84,7 +87,7 @@ export default function Resume({ resumeRef }) {
 
         <Timeline>
           <h2>
-            Educação <MdBook size={20} color="#fff" />
+            Educação <MdBook size={20} color={colors.primary} />
           </h2>
 
           <ul>
@@ -104,7 +107,7 @@ export default function Resume({ resumeRef }) {
 
         <Timeline>
           <h2>
-            Profissional <MdWork size={20} color="#fff" />
+            Profissional <MdWork size={20} color={colors.primary} />
           </h2>
 
           <ul>

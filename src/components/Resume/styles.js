@@ -40,7 +40,6 @@ export const Skill = styled.div`
   align-items: flex-start;
 
   span {
-    color: #fff;
     font-weight: bold;
     font-size: 1.8rem;
     margin: 5px;
@@ -51,16 +50,16 @@ export const ProgressBar = styled.div`
   position: relative;
   height: 5px;
   width: 100%;
-  background: #fff;
+  background: ${props =>
+    props.theme.colors.secundary && lighten(0.7, props.theme.colors.secundary)};
   border-radius: 4px;
   transition: width 3s;
 
   &::before {
     position: absolute;
     content: '';
-    background: #7289da;
+    background: ${props => props.theme.colors.primary};
     border-radius: 4px;
-    /* width: ${props => props.skillWidth}%; */
     height: 5px;
 
     ${props =>
@@ -77,7 +76,6 @@ export const Timeline = styled.div`
   h2 {
     display: flex;
     align-items: center;
-    color: #fff;
 
     svg {
       margin: 0 15px;
@@ -89,24 +87,22 @@ export const Timeline = styled.div`
 
     li {
       position: relative;
-      color: #fff;
       display: flex;
       flex-direction: column;
       padding: 15px 30px;
-      border-bottom: 2px dashed ${lighten(0.2, '#2c2f33')};
-      border-left: 4px solid ${lighten(0.2, '#2c2f33')};
+      border: 2px solid ${props => props.theme.colors.secundary};
       transition: all 0.2s ease-in-out;
+      border-collapse: collapse;
+      margin: 5px 0;
 
       h3 {
         font-weight: bold;
         font-size: 2rem;
         line-height: 3rem;
         text-transform: uppercase;
-        color: #7289da;
       }
 
       time {
-        color: ${lighten(0.2, '#2c2f33')};
         margin: 20px 0;
       }
 
@@ -116,7 +112,7 @@ export const Timeline = styled.div`
       }
 
       &:hover {
-        border-left: 4px solid #7289da;
+        border: 2px solid ${props => props.theme.colors.primary};
       }
 
       &::before {
@@ -127,14 +123,14 @@ export const Timeline = styled.div`
         top: 50%;
         left: -16px;
         transform: translateY(-50%);
-        border: 4px solid ${lighten(0.2, '#2c2f33')};
+        border: 4px solid ${props => props.theme.colors.secundary};
         border-radius: 50%;
-        background: #2c2f33;
+        background: ${props => props.theme.colors.background};
         transition: all 0.2s ease-in-out;
       }
 
       &:hover::before {
-        border: 4px solid #7289da;
+        border: 4px solid ${props => props.theme.colors.primary};
       }
     }
   }
