@@ -21,4 +21,5 @@ Ao acessar o [endereço](https://matheus-cardoso.web.app/) é possivel navegar p
 ![navegação mobile](/.github/mobile.gif)
 
 ---
+
 Este é um projeto ainda em andamento e conforme for atualizado, irei subindo as modificações para o repositório.
